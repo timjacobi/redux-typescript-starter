@@ -1,0 +1,36 @@
+{
+  "scripts": {
+    "bundle": "webpack",
+    "dev": "webpack-dev-server",
+    "test": "mocha --compilers ts:ts-node/register,tsx:ts-node/register --recursive"
+  },
+  "devDependencies": {
+    "@types/chai": "^3.4.34",
+    "@types/enzyme": "^2.4.36",
+    "@types/mocha": "^2.2.32",
+    "@types/react": "^0.14.41",
+    "@types/react-dom": "^0.14.18",
+    "@types/react-redux": "^4.4.32",
+    "@types/redux": "^3.6.31",
+    "chai": "^3.5.0",
+    "enzyme": "^2.5.1",
+    "mocha": "^3.1.2",
+    "react": "^15.3.2",
+    "react-addons-test-utils": "^15.3.2",
+    "react-dom": "^15.3.2",
+    "react-redux": "^4.4.5",
+    "redux": "^3.6.0",
+    "redux-observable": "^0.12.1",
+    "rxjs": "^5.0.0-rc.1",
+    "sinon": "^1.17.6",
+    "source-map-loader": "^0.1.5",
+    "ts-loader": "^0.9.4",
+    "ts-node": "^1.6.0",
+    "typescript": "^2.0.3",
+    "webpack": "^1.13.2",
+    "webpack-dev-server": "^1.16.2"
+  },
+  "dependencies": {
+    "express": "^4.14.0"
+  }
+}
