@@ -14,7 +14,7 @@ describe('<App />', () => {
     expect(wrapper.find('button')).to.have.length(1);
   });
 
-  it('should call the requestUsers property when the button is clicked', () => {
+  it('should call the requestUsers handler when the button is clicked', () => {
     const requestUsers = spy();
     const wrapper = shallow(<App requestUsers={requestUsers} users={Immutable.from([])} />);
     wrapper.find('button').simulate('click');
