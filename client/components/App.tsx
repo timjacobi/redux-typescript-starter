@@ -1,22 +1,29 @@
 import * as React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { ImmutableArray } from 'seamless-immutable';
 
-import { ActionTypes, requestUsers } from '../actions';
+import UserList from './UserList';
+
+import {
+  ActionTypes,
+  requestUsers
+} from '../actions';
+
+import {
+  User
+} from '../entities';
 
 interface AppProps {
   requestUsers: Function,
-  users
+  users: ImmutableArray<User>
 }
 
-export function App({ requestUsers, users } : AppProps){
-  return (
-    <div>
-      <button onClick={() => requestUsers() }>Request Users</button>
-      <br />
-      { !!users.length && JSON.stringify(users) }
-    </div>
-  );
-}
+export const App = ({ requestUsers, users }: AppProps) =>
+  <div>
+    <button onClick={() => requestUsers()}>Request Users</button>
+    <br />
+    <UserList users={users} />
+  </div>
 
 export default connect(({ users }) => ({ users }), { requestUsers })(App);
