@@ -11,7 +11,7 @@ import {
   User
 } from './entities';
 
-function users(users: ImmutableArray<User> = Immutable.from([]), action: Action): ImmutableArray<any> {
+function users(users: ImmutableArray<User> = Immutable.from([]), action: Action): ImmutableArray<User> {
   switch (action.type) {
     case ActionTypes.SET_USERS:
       return Immutable.from(action.payload);
