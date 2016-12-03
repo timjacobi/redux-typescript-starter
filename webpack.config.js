@@ -5,7 +5,7 @@ module.exports = {
     },
 
     // Enable sourcemaps for debugging webpack's output.
-    devtool: "source-map",
+    devtool: "inline-source-map",
 
     resolve: {
         // Add '.ts' and '.tsx' as resolvable extensions.
@@ -14,8 +14,12 @@ module.exports = {
 
     module: {
         loaders: [
-            // All files with a '.ts' or '.tsx' extension will be handled by 'ts-loader'.
-            { test: /\.tsx?$/, loader: "ts-loader" }
+            // All files with a '.ts' or '.tsx' extension will be handled 
+            // by 'ts-loader' first and then by 'babel-loader'
+            //
+            // Webpack uses the last loader in the chain first
+            // i.e. babel-loader(ts-loader(source))
+            { test: /\.tsx?$/, loaders: ["babel-loader", "ts-loader"] }
         ],
 
         preLoaders: [
