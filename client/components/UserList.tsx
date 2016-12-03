@@ -1,6 +1,5 @@
 import * as React from 'react';
 import * as Immutable from 'seamless-immutable';
-import { ImmutableArray } from 'seamless-immutable';
 import { User } from '../entities';
 
 interface UserListProps {

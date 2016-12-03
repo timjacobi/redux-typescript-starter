@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { ImmutableArray } from 'seamless-immutable';
 
 import UserList from './UserList';
 
