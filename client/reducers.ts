@@ -1,21 +1,21 @@
-import * as SI from 'seamless-immutable';
+import * as Immutable from 'seamless-immutable';
+import { ImmutableArray } from 'seamless-immutable';
+import { combineReducers } from 'redux';
 
 import { 
   Action, 
   ActionTypes 
 } from './actions';
 
-interface StateShape {
-  users: any[]
-}
-
-export interface State extends SI.ImmutableObject<StateShape> {}
-
-export default function rootReducer(state: State = SI.from({ users: [] }), action: Action): State {
+function users(users: ImmutableArray<any> = Immutable.from([]), action: Action): ImmutableArray<any> {
   switch(action.type){
     case ActionTypes.SET_USERS:
-    return state.set("users", action.payload);
+    return Immutable.from(action.payload);
     default:
-    return state;
+    return users;
   }
-}
+};
+
+export default combineReducers({
+  users
+});

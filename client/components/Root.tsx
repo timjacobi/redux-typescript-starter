@@ -3,10 +3,8 @@ import { Provider } from 'react-redux';
 
 import App from './App';
 
-import { State } from '../reducers';
-
 interface RootProps {
-  store: Redux.Store<State>
+  store: Redux.Store<{}>
 }
 
 export default ({ store } : RootProps) =>
