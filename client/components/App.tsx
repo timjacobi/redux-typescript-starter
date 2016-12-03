@@ -2,9 +2,14 @@ import * as React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import ActionTypes from '../action-types/app';
+import { ActionTypes, requestUsers } from '../actions';
 
-export function App({ requestUsers, users } : { requestUsers: Function, users }) : JSX.Element {
+interface AppProps {
+  requestUsers: Function,
+  users
+}
+
+export function App({ requestUsers, users } : AppProps){
   return (
     <div>
       <button onClick={() => requestUsers() }>Request Users</button>
@@ -14,10 +19,4 @@ export function App({ requestUsers, users } : { requestUsers: Function, users })
   );
 }
 
-function mapDispatchToProps(dispatch){
-  return {
-    requestUsers: dispatch({ type: ActionTypes.REQUEST_USERS })
-  }
-}
-
-export default connect(({ users }) => ({ users }), mapDispatchToProps)(App);
+export default connect(({ users }) => ({ users }), { requestUsers })(App);
