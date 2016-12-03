@@ -4,10 +4,10 @@ import { ImmutableArray } from 'seamless-immutable';
 import { User } from '../entities';
 
 interface UserListProps {
-  users: ImmutableArray<User>
+  users: User[]
 }
 
-export default ({ users = Immutable.from([]) }: UserListProps) =>
+export default ({ users = [] }: UserListProps) =>
   <div>
     {JSON.stringify(users)}
   </div>

@@ -15,7 +15,7 @@ import {
 
 interface AppProps {
   requestUsers: Function,
-  users: ImmutableArray<User>
+  users: User[]
 }
 
 export const App = ({ requestUsers, users }: AppProps) =>
