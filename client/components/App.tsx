@@ -18,11 +18,23 @@ interface AppProps {
   users: User[]
 }
 
-export const App = ({ requestUsers, users }: AppProps) =>
-  <div>
-    <button onClick={() => requestUsers()}>Request Users</button>
-    <br />
-    <UserList users={users} />
-  </div>
+export class App extends React.Component<AppProps, any>{
+  constructor(props){
+    super(props);
+    this.props = props;
+  }
+
+  componentDidMount(){
+    this.props.requestUsers();
+  }
+
+  render(){
+    const { users } = this.props;
+
+    return (
+      <UserList users={users} />
+    );
+  }
+}
 
 export default connect(({ users }) => ({ users }), { requestUsers })(App);

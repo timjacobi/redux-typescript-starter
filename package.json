@@ -2,7 +2,7 @@
   "scripts": {
     "bundle": "webpack",
     "dev": "webpack-dev-server",
-    "test": "mocha --compilers ts:ts-node/register,tsx:ts-node/register --recursive"
+    "test": "mocha --require jsdom-global/register --compilers ts:ts-node/register,tsx:ts-node/register --recursive"
   },
   "devDependencies": {
     "@types/chai": "^3.4.34",
@@ -16,6 +16,8 @@
     "@types/sinon": "^1.16.32",
     "chai": "^3.5.0",
     "enzyme": "^2.5.1",
+    "jsdom": "9.8.3",
+    "jsdom-global": "2.1.0",
     "mocha": "^3.1.2",
     "react": "^15.3.2",
     "react-addons-test-utils": "^15.3.2",
