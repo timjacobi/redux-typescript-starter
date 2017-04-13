@@ -4,7 +4,7 @@ import { createEpicMiddleware } from 'redux-observable';
 import rootReducer from './reducers';
 import rootEpic from './epics';
 
-export default (): Redux.Store<{}> => {
+export default (): Redux.Store<object> => {
   const store: Redux.Store<{}> = createStore(rootReducer, applyMiddleware(createEpicMiddleware(rootEpic)));
 
   return store;

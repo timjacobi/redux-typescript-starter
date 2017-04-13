@@ -4,8 +4,8 @@ export enum ActionTypes {
 }
 
 export interface Action extends Redux.Action {
-  type: ActionTypes,
-  payload?
+  readonly type: ActionTypes,
+  readonly payload?
 }
 
 export function requestUsers() : Action {

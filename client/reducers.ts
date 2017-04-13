@@ -1,5 +1,3 @@
-import * as Immutable from 'seamless-immutable';
-import { ImmutableArray } from 'seamless-immutable';
 import { combineReducers } from 'redux';
 
 import {
@@ -11,10 +9,10 @@ import {
   User
 } from './entities';
 
-function users(users: ImmutableArray<User> = Immutable.from([]), action: Action): ImmutableArray<User> {
+function users(users: User[] = [], action: Action): User[] {
   switch (action.type) {
     case ActionTypes.SET_USERS:
-      return Immutable.from(action.payload);
+      return action.payload;
   }
   return users;
 };

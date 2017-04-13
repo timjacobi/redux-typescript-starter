@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import UserList from './UserList';
 
 import {
-  ActionTypes,
   requestUsers
 } from '../actions';
 
@@ -13,8 +12,8 @@ import {
 } from '../entities';
 
 interface AppProps {
-  requestUsers: Function,
-  users: User[]
+  readonly requestUsers: Function,
+  readonly users: User[]
 }
 
 export class App extends React.Component<AppProps, any>{
