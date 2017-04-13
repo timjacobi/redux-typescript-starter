@@ -1,23 +1,39 @@
 import * as React from 'react';
-import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import ActionTypes from '../action-types/app';
+import UserList from './UserList';
 
-export function App({ requestUsers, users } : { requestUsers: Function, users }) : JSX.Element {
-  return (
-    <div>
-      <button onClick={() => requestUsers() }>Request Users</button>
-      <br />
-      { !!users.length && JSON.stringify(users) }
-    </div>
-  );
+import {
+  ActionTypes,
+  requestUsers
+} from '../actions';
+
+import {
+  User
+} from '../entities';
+
+interface AppProps {
+  requestUsers: Function,
+  users: User[]
 }
 
-function mapDispatchToProps(dispatch){
-  return {
-    requestUsers: dispatch({ type: ActionTypes.REQUEST_USERS })
+export class App extends React.Component<AppProps, any>{
+  constructor(props){
+    super(props);
+    this.props = props;
+  }
+
+  componentDidMount(){
+    this.props.requestUsers();
+  }
+
+  render(){
+    const { users } = this.props;
+
+    return (
+      <UserList users={users} />
+    );
   }
 }
 
-export default connect(({ users }) => ({ users }), mapDispatchToProps)(App);
+export default connect(({ users }) => ({ users }), { requestUsers })(App);

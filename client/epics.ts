@@ -1,10 +1,11 @@
 import * as Rx from 'rxjs';
+import { combineEpics } from 'redux-observable';
 
-import ActionTypes from '../action-types/app';
+import { ActionTypes } from './actions';
 
 const { ajax } = Rx.Observable;
 
-export default function fetchUserEpic(action$){
+export function fetchUserEpic(action$){
   return action$.ofType(ActionTypes.REQUEST_USERS)
     .mergeMap((action) =>
       ajax.getJSON(`http://jsonplaceholder.typicode.com/users`)
@@ -12,3 +13,5 @@ export default function fetchUserEpic(action$){
       )
     );
 };
+
+export default combineEpics(fetchUserEpic);

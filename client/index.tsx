@@ -1,22 +1,9 @@
-import * as React from "react";
-import * as ReactDOM from "react-dom";
+import { createElement } from 'react';
+import { render } from 'react-dom';
 
-import { createStore, applyMiddleware } from 'redux';
-import { createEpicMiddleware } from 'redux-observable';
-import { Provider } from 'react-redux';
+import Root from './components/Root';
+import setupStore from './setupStore';
 
-import App from './components/App';
-import rootReducer from './reducers';
-import rootEpic from './epics';
+const store: Redux.Store<{}> = setupStore();
 
-const store = createStore(rootReducer, applyMiddleware(createEpicMiddleware(rootEpic)));
-
-console.log(store);
-
-const Root = () => (
-  <Provider store={store}>
-    <App />
-  </Provider>
-);
-
-ReactDOM.render(<Root />, document.getElementById("app"));
+render(createElement(Root, { store }), document.querySelector('#app'));
